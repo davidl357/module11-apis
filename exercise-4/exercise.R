@@ -10,13 +10,14 @@ source("apikey.R")
 # a list of information about that movie. The steps for this algorithm are below:
 # Construct an HTTP request to search for reviews for the given movie.
 # The base URI is `https://api.nytimes.com/svc/movies/v2/`
+base.url <- "https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=8084052501eb4adc9f2aa0aa3a04fa05&query=Inception"
 # The resource is `reviews/search.json`
 # See the interactive console for more detail:
-#   https://developer.nytimes.com/movie_reviews_v2.json#/Console/GET/reviews/search.json
+#   https://developer.nytimes.com/movie_reviews_v2.json#/Console/GET/reviews/search.json?api-key=nty.apikey&query=Inception"
 # You should use YOUR api key (as the `api-key` parameter)
 movieInformation <- function(name) {
-  base.url("https://api.nytimes.com/svc/movies/v2")
-  response <- paste0(base.url, "/reviews/search.json", movie)
+  response <-  GET(base.url)
+  response <- paste0(base.url, "/reviews/search.json", list(q=))
 }
 
 # Send the HTTP Request to download the data
